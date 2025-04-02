@@ -14,9 +14,11 @@ variable "tags" {
 
 variable "vpc" {
   type = object({
-    name                  = string
-    cidr_block            = string
-    internet_gateway_name = string
+    name                     = string
+    cidr_block               = string
+    internet_gateway_name    = string
+    public_route_table_name  = string
+    private_route_table_name = string
     public_subnets = list(object({
       name                    = string
       cidr_block              = string
@@ -32,9 +34,11 @@ variable "vpc" {
   })
 
   default = {
-    name                  = "studying"
-    cidr_block            = "10.0.0.0/24"
-    internet_gateway_name = "igw"
+    name                     = "studying"
+    cidr_block               = "10.0.0.0/24"
+    internet_gateway_name    = "igw"
+    public_route_table_name  = "public-route-table"
+    private_route_table_name = "private-route-table"
     public_subnets = [{
       name                    = "public-1a"
       cidr_block              = "10.0.0.0/26"
