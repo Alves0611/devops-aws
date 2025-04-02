@@ -14,12 +14,14 @@ variable "tags" {
 
 variable "vpc" {
   type = object({
-    name       = string
-    cidr_block = string
+    name                  = string
+    cidr_block            = string
+    internet_gateway_name = string
   })
 
   default = {
-    name = "studying"
-    cidr_block = "10.0.0.0/24"
+    name                  = "studying"
+    cidr_block            = "10.0.0.0/24"
+    internet_gateway_name = "igw"
   }
 }
