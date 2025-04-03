@@ -30,6 +30,12 @@ variable "eks_cluster" {
     enabled_cluster_log_types              = list(string)
     access_config_authentication_mode      = string
     node_group_name                        = string
+    node_group_role_name                   = string
+    node_group_capacity_type               = string
+    node_group_instance_types              = list(string)
+    node_group_scaling_config_desired_size = string
+    node_group_scaling_config_max_size     = string
+    node_group_scaling_config_min_size     = string
   })
 
   default = {
@@ -38,5 +44,12 @@ variable "eks_cluster" {
     version                                = "1.31"
     enabled_cluster_log_types              = ["api", "audit", "authenticator", "controllerManager", "scheduler"]
     access_config_authentication_mode      = "API_AND_CONFIG_MAP"
+    node_group_name                        = "studying-node-group"
+    node_group_role_name                   = "StudyingEKSNodeGroupRole"
+    node_group_capacity_type               = "ON_DEMAND"
+    node_group_instance_types              = ["t3.medium"]
+    node_group_scaling_config_desired_size = "2"
+    node_group_scaling_config_max_size     = "2"
+    node_group_scaling_config_min_size     = "2"
   }
 }
