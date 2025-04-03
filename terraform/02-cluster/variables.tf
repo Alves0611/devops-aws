@@ -11,3 +11,13 @@ variable "tags" {
   }
   description = "Tags to be applied to all resources"
 }
+
+variable "vpc_resources" {
+  type = object({
+    vpc = string
+  })
+
+  default = {
+    vpc = "studying"
+  }
+}
