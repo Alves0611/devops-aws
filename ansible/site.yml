@@ -18,3 +18,14 @@
         aws iam create-policy \
           --policy-name AWSLoadBalancerControllerIAMPolicy \
           --policy-document '{{ iam_policy_json.stdout }}'
+
+    - name: Setup IRSA
+      shell: |
+        eksctl create iamserviceaccount \
+          --cluster={{eks_cluster}} \
+          --namespace=kube-system \
+          --name=aws-load-balancer-controller \
+          --attach-policy-arn=arn:aws:iam::968225077300:policy/AWSLoadBalancerControllerIAMPolicy \
+          --override-existing-serviceaccounts \
+          --region {{aws_region}} \
+          --approve
