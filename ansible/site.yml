@@ -25,7 +25,7 @@
           --cluster={{eks_cluster}} \
           --namespace=kube-system \
           --name=aws-load-balancer-controller \
-          --attach-policy-arn=arn:aws:iam::968225077300:policy/AWSLoadBalancerControllerIAMPolicy \
+          --attach-policy-arn=arn:aws:iam::891377404175:policy/AWSLoadBalancerControllerIAMPolicy \
           --override-existing-serviceaccounts \
           --region {{aws_region}} \
           --approve
