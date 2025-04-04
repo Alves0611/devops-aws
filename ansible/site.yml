@@ -1,0 +1,10 @@
+---
+- name: Install AWS Load Balancer Controller
+  gather_facts: false
+  hosts: localhost
+  vars:
+    aws_region: us-east-1
+    eks_cluster: studying-cluster
+    aws_account_id: 891377404175
+    vpc_id: vpc-0ffd05814af0a9b83
+  tasks:
