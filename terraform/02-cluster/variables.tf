@@ -53,3 +53,21 @@ variable "eks_cluster" {
     node_group_scaling_config_min_size     = "2"
   }
 }
+
+variable "ecr_repositories" {
+  type = list(object({
+    name                 = string
+    image_tag_mutability = string
+  }))
+
+  default = [
+    {
+      name                 = "studying/production/frontend"
+      image_tag_mutability = "MUTABLE"
+    },
+    {
+      name                 = "studying/production/backend"
+      image_tag_mutability = "MUTABLE"
+    }
+  ]
+}
