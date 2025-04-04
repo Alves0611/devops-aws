@@ -8,3 +8,7 @@
     aws_account_id: 891377404175
     vpc_id: vpc-0ffd05814af0a9b83
   tasks:
+    - name: Download IAM Policy
+      shell: |
+        curl https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.12.0/docs/install/iam_policy.json
+      register: iam_policy_json
