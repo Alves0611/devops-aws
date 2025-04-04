@@ -29,3 +29,8 @@
           --override-existing-serviceaccounts \
           --region {{aws_region}} \
           --approve
+
+    - name: Helm Repo Add
+      shell: |
+        helm repo add eks https://aws.github.io/eks-charts
+        helm repo update eks
