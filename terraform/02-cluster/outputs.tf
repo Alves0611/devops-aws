@@ -17,6 +17,10 @@ output "eks_cluster_ca_data" {
   description = "EKS cluster certificate authority data"
 }
 
+output "eks_node_group_name" {
+  value       = aws_eks_node_group.this.node_group_name
+}
+
 output "eks_node_group_role_name" {
   value = aws_iam_role.eks_node_group.name
 }
