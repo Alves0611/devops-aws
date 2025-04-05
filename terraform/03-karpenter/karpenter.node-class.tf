@@ -5,3 +5,10 @@ data "http" "node_class_crd" {
 resource "kubernetes_manifest" "node_class_crd" {
   manifest = yamldecode(data.http.node_class_crd.response_body)
 }
+
+resource "kubernetes_manifest" "node_class" {
+  manifest = yamldecode(templatefile("./manifests/karpenter.node-class.yml", {
+    node_group_role_name = local.node_group_role_name,
+    cluster_name         = local.eks_cluster_name
+  }))
+}
