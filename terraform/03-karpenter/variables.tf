@@ -12,4 +12,14 @@ variable "tags" {
   description = "Tags to be applied to all resources"
 }
 
+variable "karpenter" {
+  type = object({
+    karpenter_controller_role_name = string
+    karpenter_controll_policy_name = string
+  })
 
+  default = {
+    karpenter_controller_role_name = "karpenter-controller"
+    karpenter_controll_policy_name = "arn:aws:iam::aws:policy/AWSKarpenterController"
+  }
+}
