@@ -7,4 +7,7 @@ resource "kubernetes_manifest" "node_pool_crd" {
   depends_on = [local.eks_node_group_name]
 }
 
-
+resource "kubernetes_manifest" "node_pool" {
+  manifest   = yamldecode(file("./manifests/karpenter.node-pool.yml"))
+  depends_on = [kubernetes_manifest.node_pool_crd, kubernetes_manifest.node_class]
+}
