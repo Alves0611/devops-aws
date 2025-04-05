@@ -13,3 +13,8 @@ output "eks_node_group_role_name" {
 output "eks_node_group_role_arn" {
   value = aws_iam_role.eks_node_group.arn
 }
+
+output "eks_cluster_security_group_id" {
+  value       = aws_eks_cluster.this.vpc_config[0].cluster_security_group_id
+  description = "Security group ID associated with the EKS cluster"
+}
