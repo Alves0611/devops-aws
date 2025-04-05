@@ -4,12 +4,12 @@ resource "aws_iam_role" "karpenter_controller" {
     Statement = [{
       Effect = "Allow"
       Principal = {
-        "Federated" : "arn:aws:iam::${data.aws_caller_identity.current.id}:oidc-provider/${local.eks_oidc_url}"
+        Federated = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:oidc-provider/${local.eks_oidc_url}"
       }
       Action = "sts:AssumeRoleWithWebIdentity"
       Condition = {
         StringEquals = {
-          "${local.eks_oidc_url}:aud" = "sts.amazonaws.com",
+          "${local.eks_oidc_url}:aud" = "sts.amazonaws.com"
           "${local.eks_oidc_url}:sub" = "system:serviceaccount:kube-system:karpenter"
         }
       }
@@ -20,8 +20,6 @@ resource "aws_iam_role" "karpenter_controller" {
 
 resource "aws_iam_policy" "karpenter_controller" {
   name        = var.karpenter.karpenter_controll_policy_name
-  path        = "/"
-  description = "My test policy"
 
   policy = jsonencode({
     Version = "2012-10-17"
