@@ -20,6 +20,6 @@ variable "karpenter" {
 
   default = {
     karpenter_controller_role_name = "karpenter-controller"
-    karpenter_controll_policy_name = "arn:aws:iam::aws:policy/AWSKarpenterController"
+    karpenter_controll_policy_name = "KarpenterControllerPolicy"
   }
 }
