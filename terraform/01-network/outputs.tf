@@ -13,3 +13,8 @@ output "private_subnets_arn" {
 output "public_subnets_arn" {
   value = aws_subnet.public[*].arn
 }
+
+output "private_subnet_ids" {
+  value       = aws_subnet.private[*].id
+  description = "IDs of the private subnets"
+}
